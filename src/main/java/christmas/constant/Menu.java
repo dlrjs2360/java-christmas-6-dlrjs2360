@@ -10,7 +10,7 @@ public enum Menu {
     SEAFOOD_PASTA("해산물파스타", 35_000, Category.MAIN_DISH),
     CHRISTMAS_PAST("크리스마스파스타", 25_000, Category.MAIN_DISH),
 
-    CHOCOLATE_CAKE("초콜릿케이크", 8_000, Category.DESSERT),
+    CHOCOLATE_CAKE("초코케이크", 8_000, Category.DESSERT),
     ICE_CREAM("아이스크림", 6_000, Category.DESSERT),
     ZERO_COKE("제로콜라", 3_000, Category.DRINK),
     RED_WINE("레드와인", 10_000, Category.DRINK),

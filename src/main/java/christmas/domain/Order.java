@@ -15,8 +15,7 @@ public class Order {
     public Order(String orderInput,
         OrderValidator orderValidator,
         OrderMenuValidator orderMenuValidator,
-        OrderAmountValidator orderAmountValidator)
-    {
+        OrderAmountValidator orderAmountValidator) {
         validate(orderInput, orderValidator);
         String[] validatedOrderInfo = ParseUtil.parseToArray(orderInput,
             CommonLetter.MENU_AMOUNT_SEPARATOR.getLetter());
@@ -34,5 +33,11 @@ public class Order {
 
     public int getAmount() {
         return amount.getAmount();
+    }
+
+    @Override
+    public String toString() {
+        return menu.getMenu().getName() + CommonLetter.SPACE.getLetter() +
+            amount.getAmount() + "개" + CommonLetter.NEW_LINE.getLetter();
     }
 }

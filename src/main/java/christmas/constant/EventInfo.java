@@ -8,13 +8,13 @@ public enum EventInfo {
     ORDER_AMOUNT_MIN(1),
     ORDER_AMOUNT_MAX(20);
 
-    private final int month;
+    private final int number;
 
-    EventInfo(int month) {
-        this.month = month;
+    EventInfo(int number) {
+        this.number = number;
     }
 
     public int getNumber() {
-        return month;
+        return number;
     }
 }
