@@ -12,6 +12,7 @@ import christmas.validator.OrderValidator;
 import christmas.validator.ReservationValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.util.List;
 
 public class EventController {
 
@@ -23,7 +24,7 @@ public class EventController {
     OrderMenuValidator orderMenuValidator;
 
     Reservation reservation;
-    TotalOrder orders;
+    TotalOrder totalOrder;
 
     public EventController() {
         this.inputView = new InputView();
@@ -55,12 +56,13 @@ public class EventController {
 
     public void initOrder() {
         try {
-            orders = new TotalOrder(
-                ParseUtil.parseToList(inputView.askForMenuAndAmount(),
-                    CommonLetter.ORDER_SEPARATOR.getLetter()).stream()
+            List<String> seperatedOrderInput = ParseUtil.parseToList(
+                inputView.askForMenuAndAmount(), CommonLetter.ORDER_SEPARATOR.getLetter());
+            List<Order> orders = seperatedOrderInput.stream()
                 .map(purchase -> new Order(purchase, orderValidator, orderMenuValidator,
                     orderAmountValidator))
-                .toList());
+                .toList();
+            totalOrder = new TotalOrder(orders);
         } catch (IllegalArgumentException e) {
             ConsoleUtil.println(e.getMessage());
             initOrder();
