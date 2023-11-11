@@ -5,15 +5,19 @@ import christmas.validator.ReservationValidator;
 
 public class Reservation {
 
-    private final int reservationNumber;
+    private final int reservationDate;
 
-    public Reservation(String reservationNumber, ReservationValidator reservationValidator) {
-        validate(reservationNumber, reservationValidator);
-        this.reservationNumber = ParseUtil.parseToInt(reservationNumber);
+    public Reservation(String reservationDate, ReservationValidator reservationValidator) {
+        validate(reservationDate, reservationValidator);
+        this.reservationDate = ParseUtil.parseToInt(reservationDate);
     }
 
     void validate(String reservationNumber, ReservationValidator reservationValidator) {
         reservationValidator.validate(reservationNumber);
+    }
+
+    public int getReservationDate() {
+        return reservationDate;
     }
 
 }
