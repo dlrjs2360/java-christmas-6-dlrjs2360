@@ -15,13 +15,14 @@ public class ReservationValidator implements Validator<String> {
         try {
             Integer.parseInt(reservationNumber);
         } catch (NumberFormatException e) {
-            throwException(ErrorMessage.RESERVATION_INPUT_ERROR);
+            throwException(ErrorMessage.INVALID_RESERVATION_DATE);
         }
     }
 
     public void isInRange(int reservationNumber) {
-        if (reservationNumber < EventInfo.EVENT_START_DAY.getNumber() || reservationNumber > EventInfo.EVENT_END_DAY.getNumber()) {
-            throwException(ErrorMessage.RESERVATION_INPUT_ERROR);
+        if (reservationNumber < EventInfo.EVENT_START_DAY.getNumber()
+            || reservationNumber > EventInfo.EVENT_END_DAY.getNumber()) {
+            throwException(ErrorMessage.INVALID_RESERVATION_DATE);
         }
     }
 }
