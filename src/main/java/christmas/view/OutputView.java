@@ -23,4 +23,14 @@ public class OutputView {
             .append(Message.PRE_BENEFIT_INTRODUCE.getMessage());
         ConsoleUtil.println(sb.toString());
     }
+
+    public void printTotalPrice(int totalPrice) {
+        StringBuilder sb = new StringBuilder()
+            .append(CommonLetter.NEW_LINE.getLetter())
+            .append(Message.TOTAL_PRICE_HEADER.getMessage())
+            .append(CommonLetter.NEW_LINE.getLetter())
+            .append(totalPrice)
+            .append("원");
+        ConsoleUtil.println(sb.toString());
+    }
 }

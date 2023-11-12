@@ -40,4 +40,8 @@ public class Order {
         return menu.getMenu().getName() + CommonLetter.SPACE.getLetter() +
             amount.getAmount() + "개" + CommonLetter.NEW_LINE.getLetter();
     }
+
+    public int getPrice() {
+        return menu.getMenu().getPrice() * amount.getAmount();
+    }
 }

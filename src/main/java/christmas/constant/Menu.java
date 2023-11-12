@@ -5,16 +5,17 @@ public enum Menu {
     TAPAS("타파스", 5_500, Category.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8_000, Category.APPETIZER),
 
-    T_BONE_STEAK("T본스테이크", 55_000, Category.MAIN_DISH),
+    T_BONE_STEAK("티본스테이크", 55_000, Category.MAIN_DISH),
     PORK_LIP("바비큐립", 54_000, Category.MAIN_DISH),
     SEAFOOD_PASTA("해산물파스타", 35_000, Category.MAIN_DISH),
     CHRISTMAS_PASTA("크리스마스파스타", 25_000, Category.MAIN_DISH),
 
-    CHOCOLATE_CAKE("초코케이크", 8_000, Category.DESSERT),
-    ICE_CREAM("아이스크림", 6_000, Category.DESSERT),
+    CHOCOLATE_CAKE("초코케이크", 15_000, Category.DESSERT),
+    ICE_CREAM("아이스크림", 5_000, Category.DESSERT),
+
     ZERO_COKE("제로콜라", 3_000, Category.DRINK),
-    RED_WINE("레드와인", 10_000, Category.DRINK),
-    CHAMPAGNE("샴페인", 15_000, Category.DRINK);
+    RED_WINE("레드와인", 60_000, Category.DRINK),
+    CHAMPAGNE("샴페인", 25_000, Category.DRINK);
 
     public enum Category {
         APPETIZER("에피타이저"),

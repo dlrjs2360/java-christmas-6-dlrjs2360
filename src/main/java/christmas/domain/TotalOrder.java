@@ -1,9 +1,11 @@
 package christmas.domain;
 
+import christmas.constant.Menu;
 import christmas.validator.TotalOrderValidator;
 import java.util.List;
 
 public class TotalOrder {
+
     private final List<Order> orders;
 
     public TotalOrder(List<Order> orders, TotalOrderValidator totalOrderValidator) {
@@ -22,6 +24,12 @@ public class TotalOrder {
             stringBuilder.append(order.toString());
         }
         return stringBuilder.toString();
+    }
+
+    public int getTotalPrice() {
+        return orders.stream()
+            .mapToInt(Order::getPrice)
+            .sum();
     }
 
 }

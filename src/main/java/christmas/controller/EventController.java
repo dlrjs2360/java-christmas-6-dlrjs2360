@@ -28,6 +28,7 @@ public class EventController {
 
     Reservation reservation;
     TotalOrder totalOrder;
+    DiscountController discountController;
 
     public EventController() {
         this.inputView = new InputView();
@@ -45,6 +46,8 @@ public class EventController {
         initOrder();
         printPreBenefitMessage();
         printTotalOrder();
+        initDiscountController();
+        printTotalPrice();
     }
 
     void introduceEvent() {
@@ -81,6 +84,14 @@ public class EventController {
 
     void printTotalOrder() {
         outputView.printTotalOrder(totalOrder);
+    }
+
+    void initDiscountController() {
+        discountController = new DiscountController(totalOrder);
+    }
+
+    private void printTotalPrice() {
+        outputView.printTotalPrice(discountController.getNotDiscountedPrice());
     }
 
 }
