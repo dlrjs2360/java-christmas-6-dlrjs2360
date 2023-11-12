@@ -1,7 +1,7 @@
 package christmas.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.EventInfo;
+import christmas.constant.EventDate;
 import christmas.util.ParseUtil;
 
 public class ReservationValidator implements Validator<String> {
@@ -20,8 +20,8 @@ public class ReservationValidator implements Validator<String> {
     }
 
     public void isInRange(int reservationNumber) {
-        if (reservationNumber < EventInfo.EVENT_START_DAY.getNumber()
-            || reservationNumber > EventInfo.EVENT_END_DAY.getNumber()) {
+        if (reservationNumber < EventDate.EVENT_START_DAY.getNumber()
+            || reservationNumber > EventDate.EVENT_END_DAY.getNumber()) {
             throwException(ErrorMessage.INVALID_RESERVATION_DATE);
         }
     }

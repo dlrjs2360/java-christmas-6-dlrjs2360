@@ -1,7 +1,7 @@
 package christmas.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.EventInfo;
+import christmas.constant.OrderLimit;
 
 public class OrderAmountValidator implements Validator<String>{
 
@@ -20,8 +20,8 @@ public class OrderAmountValidator implements Validator<String>{
     }
 
     void isInRange(int orderAmount) {
-        if (orderAmount < EventInfo.ORDER_AMOUNT_MIN.getNumber()
-            || orderAmount > EventInfo.ORDER_AMOUNT_MAX.getNumber()) {
+        if (orderAmount < OrderLimit.ORDER_AMOUNT_MIN.getNumber()
+            || orderAmount > OrderLimit.ORDER_AMOUNT_MAX.getNumber()) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

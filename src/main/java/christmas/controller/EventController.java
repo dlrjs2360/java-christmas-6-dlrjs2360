@@ -83,7 +83,4 @@ public class EventController {
         outputView.printTotalOrder(totalOrder);
     }
 
-
-
-
 }

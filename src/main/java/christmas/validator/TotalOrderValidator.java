@@ -1,8 +1,9 @@
 package christmas.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.EventInfo;
+import christmas.constant.EventDate;
 import christmas.constant.Menu;
+import christmas.constant.OrderLimit;
 import christmas.domain.Order;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,7 +36,7 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     }
 
     private void validateTotalAmount(int totalAmount) {
-        if (totalAmount > EventInfo.ORDER_AMOUNT_MAX.getNumber()) {
+        if (totalAmount > OrderLimit.ORDER_AMOUNT_MAX.getNumber()) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

@@ -2,8 +2,6 @@ package christmas.validator;
 
 import christmas.constant.CommonLetter;
 import christmas.constant.ErrorMessage;
-import christmas.constant.EventInfo;
-import christmas.constant.Menu;
 
 public class OrderValidator implements Validator<String> {
     public void validate(String order) {

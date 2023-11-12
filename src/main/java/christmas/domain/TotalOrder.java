@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.constant.EventInfo;
 import christmas.validator.TotalOrderValidator;
 import java.util.List;
 
@@ -24,6 +23,5 @@ public class TotalOrder {
         }
         return stringBuilder.toString();
     }
-
 
 }

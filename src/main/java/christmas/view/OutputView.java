@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.constant.CommonLetter;
-import christmas.constant.EventInfo;
+import christmas.constant.EventDate;
 import christmas.constant.Message;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
@@ -16,7 +16,7 @@ public class OutputView {
 
     public void printPreBenefitMessage(int reservationDate) {
         StringBuilder sb = new StringBuilder()
-            .append(EventInfo.EVENT_MONTH.getNumber())
+            .append(EventDate.EVENT_MONTH.getNumber())
             .append("월 ")
             .append(reservationDate)
             .append("일")
