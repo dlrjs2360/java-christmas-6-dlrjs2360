@@ -1,7 +1,8 @@
 package christmas.constant;
 
 public enum EventLocation {
-    LOCATION_NAME("우테코 식당");
+    LOCATION_NAME("우테코"),
+    LOCATION_CATEGORY("식당");
 
     private final String name;
 
