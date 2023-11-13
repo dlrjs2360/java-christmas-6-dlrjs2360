@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.event;
 
 public enum OrderLimit {
     ORDER_AMOUNT_MIN(1),

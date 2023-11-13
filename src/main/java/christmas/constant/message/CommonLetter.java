@@ -1,10 +1,11 @@
-package christmas.constant;
+package christmas.constant.message;
 
 public enum CommonLetter {
     ORDER_SEPARATOR(","),
     MENU_AMOUNT_SEPARATOR("-"),
     SPACE(" "),
-    NEW_LINE("\n");
+    NEW_LINE("\n"),
+    MINUS("-");
 
     private final String letter;
 

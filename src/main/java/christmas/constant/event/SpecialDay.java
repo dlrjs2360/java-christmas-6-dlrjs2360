@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.event;
 
 public enum SpecialDay {
     SPECIAL_DAY(3, 10, 17, 24, 25, 31);
@@ -7,10 +7,6 @@ public enum SpecialDay {
 
     SpecialDay(int... days) {
         this.days = days;
-    }
-
-    public int[] getDays() {
-        return days;
     }
 
     public boolean isSpecialDay(int day) {

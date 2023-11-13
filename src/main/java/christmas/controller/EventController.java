@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.constant.CommonLetter;
+import christmas.constant.message.CommonLetter;
 import christmas.domain.TotalOrder;
 import christmas.domain.Order;
 import christmas.domain.Reservation;
@@ -55,43 +55,38 @@ public class EventController {
         printBadge();
     }
 
-    void introduceEvent() {
+    private void introduceEvent() {
         inputView.introduceEvent();
     }
 
-    void initReservation() {
+    private void initReservation() {
         try {
             reservation = new Reservation(inputView.askForReservationMonth(), reservationValidator);
         } catch (IllegalArgumentException e) {
-            ConsoleUtil.println(e.getMessage());
+            ConsoleUtil.printMessage(e.getMessage());
             initReservation();
         }
     }
 
-    void initOrder() {
+    private void initOrder() {
         try {
-            List<String> seperatedOrderInput = ParseUtil.parseToList(
-                inputView.askForMenuAndAmount(), CommonLetter.ORDER_SEPARATOR.getLetter());
-            List<Order> orders = seperatedOrderInput.stream()
-                .map(purchase -> new Order(purchase, orderValidator, orderMenuValidator,
-                    orderAmountValidator))
-                .toList();
-            totalOrder = new TotalOrder(orders, totalOrderValidator);
+            totalOrder = new TotalOrder(
+                parseSeperatedOrderInput(separateOrderInput()), totalOrderValidator);
         } catch (IllegalArgumentException e) {
-            ConsoleUtil.println(e.getMessage());
+            ConsoleUtil.printMessage(e.getMessage());
             initOrder();
         }
     }
 
-    void printPreBenefitMessage() {
+    private void printPreBenefitMessage() {
         outputView.printPreBenefitMessage(reservation.getReservationDate());
     }
 
-    void printTotalOrder() {
+    private void printTotalOrder() {
         outputView.printTotalOrder(totalOrder);
     }
 
-    void initDiscountController() {
+    private void initDiscountController() {
         discountController = new DiscountController(totalOrder,reservation.getReservationDate());
     }
 
@@ -117,5 +112,17 @@ public class EventController {
 
     private void printBadge() {
         outputView.printBadge(discountController.getBadge());
+    }
+
+    private List<Order> parseSeperatedOrderInput(List<String> seperatedOrderInput) {
+        return seperatedOrderInput.stream()
+            .map(purchase -> new Order(purchase, orderValidator, orderMenuValidator,
+                orderAmountValidator))
+            .toList();
+    }
+
+    private List<String> separateOrderInput() {
+        return ParseUtil.parseToList(inputView.askForMenuAndAmount(),
+            CommonLetter.ORDER_SEPARATOR.getLetter());
     }
 }

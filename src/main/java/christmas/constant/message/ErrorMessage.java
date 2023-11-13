@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.message;
 
 public enum ErrorMessage {
     INVALID_RESERVATION_DATE("유효하지 않은 날짜입니다. 다시 입력해 주세요."),

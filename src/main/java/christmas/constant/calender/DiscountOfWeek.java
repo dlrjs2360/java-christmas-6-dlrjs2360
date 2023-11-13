@@ -1,12 +1,14 @@
-package christmas.constant;
+package christmas.constant.calender;
 
-public enum WeekCategory {
+import christmas.constant.discount.DiscountAmount;
+
+public enum DiscountOfWeek {
     WEEKEND(DiscountAmount.WEEKEND),
     WEEKDAY(DiscountAmount.WEEKEND);
 
     private final DiscountAmount discountAmount;
 
-    WeekCategory(DiscountAmount discountAmount) {
+    DiscountOfWeek(DiscountAmount discountAmount) {
         this.discountAmount = discountAmount;
     }
 

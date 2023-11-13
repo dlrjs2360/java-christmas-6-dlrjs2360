@@ -1,6 +1,7 @@
 package christmas.domain;
 
-import christmas.constant.Menu;
+import christmas.constant.event.Menu;
+import christmas.constant.event.Menu.Category;
 import christmas.validator.OrderMenuValidator;
 
 public class OrderMenu {
@@ -17,6 +18,14 @@ public class OrderMenu {
 
     public Menu getMenu() {
         return menu;
+    }
+
+    public int getPrice() {
+        return menu.getPrice();
+    }
+
+    public Category getCategory() {
+        return menu.getCategory();
     }
 }
 

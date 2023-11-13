@@ -1,19 +1,16 @@
 package christmas.controller;
 
-import christmas.constant.Badge;
-import christmas.constant.Calender;
-import christmas.constant.DayOfWeek;
-import christmas.constant.DiscountAmount;
-import christmas.constant.DiscountCategory;
-import christmas.constant.DiscountCriteria;
-import christmas.constant.Gift;
-import christmas.constant.Menu.Category;
-import christmas.constant.SpecialDay;
+import christmas.constant.event.Badge;
+import christmas.constant.calender.Calender;
+import christmas.constant.calender.DayOfWeek;
+import christmas.constant.discount.DiscountAmount;
+import christmas.constant.discount.DiscountCategory;
+import christmas.constant.discount.DiscountCriteria;
+import christmas.constant.event.Gift;
+import christmas.constant.event.Menu.Category;
+import christmas.constant.event.SpecialDay;
 import christmas.domain.TotalOrder;
-import christmas.util.ConsoleUtil;
-import christmas.util.ParseUtil;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class DiscountController {
 
@@ -75,12 +72,10 @@ public class DiscountController {
 
     private void calculateWeekDiscount() {
         if (isWeekend()) {
-            discountTable.put(DiscountCategory.WEEKEND_EVENT,
-                getWeekDiscount(totalOrder.getCategoryChecker().get(Category.MAIN_DISH)));
+            discountTable.put(DiscountCategory.WEEKEND_EVENT, getWeekDiscount(Category.MAIN_DISH));
             return;
         }
-        discountTable.put(DiscountCategory.WEEKDAY_EVENT,
-            getWeekDiscount(totalOrder.getCategoryChecker().get(Category.DESSERT)));
+        discountTable.put(DiscountCategory.WEEKDAY_EVENT, getWeekDiscount(Category.DESSERT));
     }
 
     private void calculateSpecialDayDiscount() {
@@ -99,8 +94,8 @@ public class DiscountController {
         return DiscountAmount.calculateChristmasDiscount(day);
     }
 
-    private int getWeekDiscount(int discountMenuCount) {
-        return getDayOfWeek().getDiscountAmount() * discountMenuCount;
+    private int getWeekDiscount(Category category) {
+        return getDayOfWeek().getDiscountAmount() * totalOrder.getCategoryChecker().getOrDefault(category, 0);
     }
 
     private boolean isWeekend() {

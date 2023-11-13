@@ -1,15 +1,12 @@
 package christmas.validator;
 
-import christmas.constant.ErrorMessage;
-import christmas.constant.EventDate;
-import christmas.constant.Menu;
-import christmas.constant.Menu.Category;
-import christmas.constant.OrderLimit;
+import christmas.constant.message.ErrorMessage;
+import christmas.constant.event.Menu;
+import christmas.constant.event.Menu.Category;
+import christmas.constant.event.OrderLimit;
 import christmas.domain.Order;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class TotalOrderValidator implements Validator<List<Order>> {
 
@@ -26,12 +23,11 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     public void validate(List<Order> orders) {
         init();
         for (Order order : orders) {
-            validateMenuCheck(order.getMenu().getName());
+            validateMenuCheck(order); // 디미터 법칙 위반
             validateTotalAmount(totalAmount + order.getAmount());
-            totalAmount += order.getAmount();
-            menuCheck.put(order.getMenu().getName(), true);
-            categoryCheck.put(order.getMenu().getCategory(),
-            categoryCheck.getOrDefault(order.getMenu().getCategory(), 0) + order.getAmount());
+            addTotalAmount(order);
+            addMenu(order);
+            checkCategoryAmount(order);
         }
         validateOnlyDrink();
     }
@@ -42,14 +38,28 @@ public class TotalOrderValidator implements Validator<List<Order>> {
         categoryCheck = new HashMap<>();
     }
 
+    private void addTotalAmount(Order order) {
+        totalAmount += order.getAmount();
+    }
+
+    private void addMenu(Order order) {
+        menuCheck.put(order.getMenuName(), true);
+    }
+
+    private void checkCategoryAmount(Order order) {
+        categoryCheck.put(
+            order.getMenu().getCategory(),
+            categoryCheck.getOrDefault(order.getMenuCategory(), 0) + order.getAmount());
+    }
+
     private void validateTotalAmount(int totalAmount) {
         if (totalAmount > OrderLimit.ORDER_AMOUNT_MAX.getNumber()) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }
 
-    private void validateMenuCheck(String menuName) {
-        if (menuCheck.getOrDefault(menuName, false)) {
+    private void validateMenuCheck(Order order) {
+        if (menuCheck.getOrDefault(order.getMenuName(), false)) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

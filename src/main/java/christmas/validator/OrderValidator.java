@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import christmas.constant.CommonLetter;
-import christmas.constant.ErrorMessage;
+import christmas.constant.message.CommonLetter;
+import christmas.constant.message.ErrorMessage;
 
 public class OrderValidator implements Validator<String> {
     public void validate(String order) {
@@ -9,9 +9,13 @@ public class OrderValidator implements Validator<String> {
     }
 
     void isSplitWithSeparator(String order) {
-        if (order.split(CommonLetter.MENU_AMOUNT_SEPARATOR.getLetter()).length != 2) {
+        if (splitOrder(order).length != 2) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
+    }
+
+    private String[] splitOrder(String order) {
+        return order.split(CommonLetter.MENU_AMOUNT_SEPARATOR.getLetter());
     }
 
 }

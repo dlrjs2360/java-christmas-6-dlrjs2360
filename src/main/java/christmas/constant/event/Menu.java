@@ -1,4 +1,6 @@
-package christmas.constant;
+package christmas.constant.event;
+
+import christmas.constant.message.ErrorMessage;
 
 public enum Menu {
     MUSHROOM_CREAM_SOUP("양송이수프", 6_000, Category.APPETIZER),
@@ -33,7 +35,6 @@ public enum Menu {
             return name;
         }
     }
-
 
     private final String name;
     private final int price;
@@ -74,5 +75,4 @@ public enum Menu {
         }
         throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
     }
-
 }

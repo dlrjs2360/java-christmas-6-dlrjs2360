@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.discount;
 
 public enum DiscountAmount {
     WEEKDAY(2_023),

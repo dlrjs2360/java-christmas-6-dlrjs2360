@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.constant.ErrorMessage;
+import christmas.constant.message.ErrorMessage;
 
 public interface Validator<T> {
 

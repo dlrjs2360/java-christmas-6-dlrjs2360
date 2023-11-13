@@ -1,4 +1,6 @@
-package christmas.constant;
+package christmas.constant.event;
+
+import christmas.constant.event.Menu;
 
 public enum Gift {
     GIFT_MENU(Menu.CHAMPAGNE, 1);
@@ -11,20 +13,12 @@ public enum Gift {
         this.giftAmount = giftAmount;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
     public int getGiftPrice() {
         return menu.getPrice();
     }
 
     @Override
     public String toString() {
-        return new StringBuilder()
-            .append(menu.getName())
-            .append(" ")
-            .append(giftAmount)
-            .append("개").toString();
+        return menu.getName() + " " + giftAmount + "개";
     }
 }

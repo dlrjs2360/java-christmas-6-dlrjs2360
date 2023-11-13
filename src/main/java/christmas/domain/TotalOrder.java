@@ -1,7 +1,6 @@
 package christmas.domain;
 
-import christmas.constant.Menu;
-import christmas.constant.Menu.Category;
+import christmas.constant.event.Menu.Category;
 import christmas.validator.TotalOrderValidator;
 import java.util.HashMap;
 import java.util.List;
@@ -23,11 +22,11 @@ public class TotalOrder {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (Order order : orders) {
-            stringBuilder.append(order.toString());
+            sb.append(order.toString());
         }
-        return stringBuilder.toString();
+        return sb.toString();
     }
 
     public int getTotalPrice() {

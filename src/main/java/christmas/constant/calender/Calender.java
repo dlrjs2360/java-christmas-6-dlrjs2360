@@ -1,5 +1,7 @@
-package christmas.constant;
+package christmas.constant.calender;
 
+import christmas.constant.event.EventDate;
+import christmas.constant.message.ErrorMessage;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -37,7 +39,8 @@ public enum Calender {
     }
 
     public static DayOfWeek getDayOfWeek(int day) {
-        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(),EventDate.EVENT_MONTH.getNumber(), day).getDayOfWeek();
+        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(),
+            EventDate.EVENT_MONTH.getNumber(), day).getDayOfWeek();
     }
 
 }

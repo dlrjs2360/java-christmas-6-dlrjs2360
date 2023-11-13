@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.discount;
 
 public enum DiscountCategory {
     CHRISTMAS_EVENT("크리스마스 디데이 할인"),

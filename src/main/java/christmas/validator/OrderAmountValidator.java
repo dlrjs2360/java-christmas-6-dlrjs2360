@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import christmas.constant.ErrorMessage;
-import christmas.constant.OrderLimit;
+import christmas.constant.message.ErrorMessage;
+import christmas.constant.event.OrderLimit;
 
 public class OrderAmountValidator implements Validator<String>{
 

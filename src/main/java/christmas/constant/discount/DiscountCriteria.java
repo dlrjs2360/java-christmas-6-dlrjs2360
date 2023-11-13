@@ -1,8 +1,8 @@
-package christmas.constant;
+package christmas.constant.discount;
 
 public enum DiscountCriteria {
 
-    DISCOUNT_START(10000),
+    DISCOUNT_START(10_000),
     GIFT(120_000);
 
     private final int price;
