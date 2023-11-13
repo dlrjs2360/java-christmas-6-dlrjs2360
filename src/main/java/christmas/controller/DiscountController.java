@@ -71,11 +71,18 @@ public class DiscountController {
     }
 
     private void calculateWeekDiscount() {
+        int discountAmount;
         if (isWeekend()) {
-            discountTable.put(DiscountCategory.WEEKEND_EVENT, getWeekDiscount(Category.MAIN_DISH));
+            discountAmount = getWeekDiscount(Category.MAIN_DISH);
+            if (discountAmount != 0) {
+                discountTable.put(DiscountCategory.WEEKEND_EVENT, discountAmount);
+            }
             return;
         }
-        discountTable.put(DiscountCategory.WEEKDAY_EVENT, getWeekDiscount(Category.DESSERT));
+        discountAmount = getWeekDiscount(Category.DESSERT);
+        if (discountAmount != 0) {
+            discountTable.put(DiscountCategory.WEEKDAY_EVENT, discountAmount);
+        }
     }
 
     private void calculateSpecialDayDiscount() {
