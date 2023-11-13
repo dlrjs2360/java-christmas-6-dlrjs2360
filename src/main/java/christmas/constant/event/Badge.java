@@ -1,6 +1,8 @@
-package christmas.constant;
+package christmas.constant.event;
 
-import java.util.function.BiFunction;
+import christmas.constant.message.Message;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public enum Badge {
     SANTA("산타",5000),
@@ -24,11 +26,17 @@ public enum Badge {
     }
 
     public static String getBadge(int price) {
-        for (Badge badge : Badge.values()) {
-            if (badge.getPrice() <= price) {
+        for (Badge badge : sortByPrice()) {
+            if (price >= badge.getPrice()) {
                 return badge.getName();
             }
         }
         return Message.DISCOUNT_NON_PROFIT.getMessage();
+    }
+
+    public static Badge[] sortByPrice() {
+        Badge[] badges = Badge.values();
+        Arrays.sort(badges, Comparator.comparingInt(Badge::getPrice).reversed());
+        return badges;
     }
 }
