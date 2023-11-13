@@ -48,6 +48,7 @@ public class EventController {
         printTotalOrder();
         initDiscountController();
         printTotalPrice();
+        printGit();
     }
 
     void introduceEvent() {
@@ -92,6 +93,10 @@ public class EventController {
 
     private void printTotalPrice() {
         outputView.printTotalPrice(discountController.getNotDiscountedPrice());
+    }
+
+    private void printGit() {
+        outputView.printGift(discountController.canGetGift());
     }
 
 }

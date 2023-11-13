@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.constant.CommonLetter;
 import christmas.constant.EventDate;
+import christmas.constant.Gift;
 import christmas.constant.Message;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
@@ -32,5 +33,15 @@ public class OutputView {
             .append(totalPrice)
             .append("원");
         ConsoleUtil.println(sb.toString());
+    }
+
+    public void printGift(boolean canGetGift) {
+        ConsoleUtil.print(CommonLetter.NEW_LINE.getLetter());
+        ConsoleUtil.println(Message.GIFT_HEADER.getMessage());
+        if (canGetGift) {
+            ConsoleUtil.println(Gift.GIFT_MENU.toString());
+            return;
+        }
+        ConsoleUtil.println(Message.DISCOUNT_NON_PROFIT.getMessage());
     }
 }

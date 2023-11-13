@@ -7,7 +7,9 @@ public enum Message {
     ASK_FOR_MENU_AND_AMOUNT("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)"),
     PRE_BENEFIT_INTRODUCE("에 "+EventLocation.LOCATION_NAME.getName()+" "+EventLocation.LOCATION_CATEGORY.getName()+"에서 받을 이벤트 혜택 미리 보기!"),
     TOTAL_ORDER_HEADER("<주문 내역>"),
-    TOTAL_PRICE_HEADER("<할인 전 총주문 금액>");
+    TOTAL_PRICE_HEADER("<할인 전 총주문 금액>"),
+    DISCOUNT_NON_PROFIT("없음"),
+    GIFT_HEADER("<증정 메뉴>");
 
     private final String message;
 
