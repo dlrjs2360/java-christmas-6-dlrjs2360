@@ -50,6 +50,7 @@ public class EventController {
         printTotalPrice();
         printGit();
         printDiscountTable();
+        printTotalDiscountPrice();
     }
 
     void introduceEvent() {
@@ -104,4 +105,7 @@ public class EventController {
         outputView.printDiscountTable(discountController.initDiscountTable());
     }
 
+    private void printTotalDiscountPrice() {
+        outputView.printTotalDiscountPrice(discountController.getTotalDiscountedPrice());
+    }
 }

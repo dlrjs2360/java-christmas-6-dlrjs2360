@@ -11,6 +11,7 @@ import christmas.constant.SpecialDay;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class DiscountController {
 
@@ -49,6 +50,12 @@ public class DiscountController {
                 .append("\n");
         }
         return sb.toString();
+    }
+
+    public String getTotalDiscountedPrice() {
+        return String.valueOf(discountTable.values().stream()
+            .mapToInt(Integer::intValue)
+            .sum());
     }
 
     private void calculateBenefits() {

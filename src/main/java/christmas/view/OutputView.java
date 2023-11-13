@@ -50,4 +50,14 @@ public class OutputView {
         ConsoleUtil.println(Message.DISCOUNT_TABLE_HEADER.getMessage());
         ConsoleUtil.print(discountTable);
     }
+
+    public void printTotalDiscountPrice(String totalDiscountedPrice) {
+        ConsoleUtil.println(
+            CommonLetter.NEW_LINE.getLetter()
+                + Message.TOTAL_DISCOUNT_PRICE_HEADER.getMessage()
+                + CommonLetter.NEW_LINE.getLetter()
+                + "-"
+                + totalDiscountedPrice
+                + "원");
+    }
 }
