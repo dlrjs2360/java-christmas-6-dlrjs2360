@@ -40,32 +40,23 @@ public class DiscountController {
         return totalPrice;
     }
 
-    public String initDiscountTable() {
+    public HashMap<DiscountCategory,Integer> initDiscountTable() {
         calculateBenefits();
-        StringBuilder sb = new StringBuilder();
-        for (DiscountCategory discountCategory : discountTable.keySet()) {
-            sb.append(discountCategory.getName())
-                .append(": ")
-                .append("-")
-                .append(discountTable.get(discountCategory))
-                .append("원")
-                .append("\n");
-        }
-        return sb.toString();
+        return discountTable;
     }
 
-    public String getTotalDiscountedPrice() {
-        return String.valueOf(discountTable.values().stream()
+    public int getTotalDiscountedPrice() {
+        return discountTable.values().stream()
             .mapToInt(Integer::intValue)
-            .sum());
+            .sum();
     }
 
-    public String getExpectedPrice() {
+    public int getExpectedPrice() {
         int giftPrice = 0;
         if (canGetGift()) {
             giftPrice = Gift.GIFT_MENU.getGiftPrice();
         }
-        return String.valueOf(totalPrice - Integer.parseInt(getTotalDiscountedPrice()) + giftPrice);
+        return totalPrice - getTotalDiscountedPrice() + giftPrice;
     }
 
     private void calculateBenefits() {
@@ -121,7 +112,7 @@ public class DiscountController {
     }
 
     public String getBadge() {
-        return Badge.getBadge(ParseUtil.parseToInt(getTotalDiscountedPrice()));
+        return Badge.getBadge(getTotalDiscountedPrice());
     }
 
 

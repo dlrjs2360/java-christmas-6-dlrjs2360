@@ -16,4 +16,8 @@ public class ParseUtil {
     public static String[] parseToArray(String order, String separator) {
         return order.split(separator);
     }
+
+    public static String parseToThousandUnit(int number) {
+        return String.format("%,d", number);
+    }
 }

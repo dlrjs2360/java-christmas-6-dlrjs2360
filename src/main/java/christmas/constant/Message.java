@@ -13,7 +13,7 @@ public enum Message {
     DISCOUNT_TABLE_HEADER("<혜택 내역>"),
     TOTAL_DISCOUNT_PRICE_HEADER("<총혜택 금액>"),
     EXPECTED_PRICE_HEADER("<할인 후 예상 결제 금액>"),
-    BADGE_HEADER("<"+EventDate.EVENT_MONTH+"월 이벤트 배지>");
+    BADGE_HEADER("<"+EventDate.EVENT_MONTH.getNumber()+"월 이벤트 배지>");
 
     private final String message;
 

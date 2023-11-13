@@ -1,11 +1,15 @@
 package christmas.view;
 
 import christmas.constant.CommonLetter;
+import christmas.constant.DiscountCategory;
 import christmas.constant.EventDate;
 import christmas.constant.Gift;
 import christmas.constant.Message;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
+import christmas.util.ParseUtil;
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -26,13 +30,12 @@ public class OutputView {
     }
 
     public void printTotalPrice(int totalPrice) {
-        StringBuilder sb = new StringBuilder()
-            .append(CommonLetter.NEW_LINE.getLetter())
-            .append(Message.TOTAL_PRICE_HEADER.getMessage())
-            .append(CommonLetter.NEW_LINE.getLetter())
-            .append(totalPrice)
-            .append("원");
-        ConsoleUtil.println(sb.toString());
+        String sb = CommonLetter.NEW_LINE.getLetter()
+            + Message.TOTAL_PRICE_HEADER.getMessage()
+            + CommonLetter.NEW_LINE.getLetter()
+            + ParseUtil.parseToThousandUnit(totalPrice)
+            + "원";
+        ConsoleUtil.println(sb);
     }
 
     public void printGift(boolean canGetGift) {
@@ -45,28 +48,33 @@ public class OutputView {
         ConsoleUtil.println(Message.DISCOUNT_NON_PROFIT.getMessage());
     }
 
-    public void printDiscountTable(String discountTable) {
-        ConsoleUtil.print(CommonLetter.NEW_LINE.getLetter());
-        ConsoleUtil.println(Message.DISCOUNT_TABLE_HEADER.getMessage());
-        ConsoleUtil.print(discountTable);
+    public void printDiscountTable(HashMap<DiscountCategory, Integer> discountTable) {
+        ConsoleUtil.println(
+            CommonLetter.NEW_LINE.getLetter()
+                + Message.DISCOUNT_TABLE_HEADER.getMessage()
+                + CommonLetter.NEW_LINE.getLetter()
+                + discountTable.entrySet().stream()
+                .map(entry -> entry.getKey().getName() + " : " + "-" + ParseUtil.parseToThousandUnit(entry.getValue()) + "원")
+                .collect(Collectors.joining(CommonLetter.NEW_LINE.getLetter()))
+        );
     }
 
-    public void printTotalDiscountPrice(String totalDiscountedPrice) {
+    public void printTotalDiscountPrice(int totalDiscountedPrice) {
         ConsoleUtil.println(
             CommonLetter.NEW_LINE.getLetter()
                 + Message.TOTAL_DISCOUNT_PRICE_HEADER.getMessage()
                 + CommonLetter.NEW_LINE.getLetter()
                 + "-"
-                + totalDiscountedPrice
+                + ParseUtil.parseToThousandUnit(totalDiscountedPrice)
                 + "원");
     }
 
-    public void printExpectedPrice(String expectedPrice) {
+    public void printExpectedPrice(int expectedPrice) {
         ConsoleUtil.println(
             CommonLetter.NEW_LINE.getLetter()
                 + Message.EXPECTED_PRICE_HEADER.getMessage()
                 + CommonLetter.NEW_LINE.getLetter()
-                + expectedPrice
+                + ParseUtil.parseToThousandUnit(expectedPrice)
                 + "원");
     }
 
