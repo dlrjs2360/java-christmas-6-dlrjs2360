@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.constant.Badge;
 import christmas.constant.Calender;
 import christmas.constant.DayOfWeek;
 import christmas.constant.DiscountAmount;
@@ -10,6 +11,7 @@ import christmas.constant.Menu.Category;
 import christmas.constant.SpecialDay;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
+import christmas.util.ParseUtil;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
@@ -56,6 +58,14 @@ public class DiscountController {
         return String.valueOf(discountTable.values().stream()
             .mapToInt(Integer::intValue)
             .sum());
+    }
+
+    public String getExpectedPrice() {
+        int giftPrice = 0;
+        if (canGetGift()) {
+            giftPrice = Gift.GIFT_MENU.getGiftPrice();
+        }
+        return String.valueOf(totalPrice - Integer.parseInt(getTotalDiscountedPrice()) + giftPrice);
     }
 
     private void calculateBenefits() {
@@ -108,6 +118,10 @@ public class DiscountController {
 
     private DayOfWeek getDayOfWeek() {
         return DayOfWeek.valueOf(Calender.getDayOfWeek(day).toString());
+    }
+
+    public String getBadge() {
+        return Badge.getBadge(ParseUtil.parseToInt(getTotalDiscountedPrice()));
     }
 
 

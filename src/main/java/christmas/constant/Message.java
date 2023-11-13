@@ -11,7 +11,9 @@ public enum Message {
     DISCOUNT_NON_PROFIT("없음"),
     GIFT_HEADER("<증정 메뉴>"),
     DISCOUNT_TABLE_HEADER("<혜택 내역>"),
-    TOTAL_DISCOUNT_PRICE_HEADER("<총혜택 금액>");
+    TOTAL_DISCOUNT_PRICE_HEADER("<총혜택 금액>"),
+    EXPECTED_PRICE_HEADER("<할인 후 예상 결제 금액>"),
+    BADGE_HEADER("<"+EventDate.EVENT_MONTH+"월 이벤트 배지>");
 
     private final String message;
 

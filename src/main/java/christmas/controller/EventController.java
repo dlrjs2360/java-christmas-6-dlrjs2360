@@ -51,6 +51,8 @@ public class EventController {
         printGit();
         printDiscountTable();
         printTotalDiscountPrice();
+        printExpectedPrice();
+        printBadge();
     }
 
     void introduceEvent() {
@@ -107,5 +109,13 @@ public class EventController {
 
     private void printTotalDiscountPrice() {
         outputView.printTotalDiscountPrice(discountController.getTotalDiscountedPrice());
+    }
+
+    private void printExpectedPrice() {
+        outputView.printExpectedPrice(discountController.getExpectedPrice());
+    }
+
+    private void printBadge() {
+        outputView.printBadge(discountController.getBadge());
     }
 }

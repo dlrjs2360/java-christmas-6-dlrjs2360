@@ -60,4 +60,21 @@ public class OutputView {
                 + totalDiscountedPrice
                 + "원");
     }
+
+    public void printExpectedPrice(String expectedPrice) {
+        ConsoleUtil.println(
+            CommonLetter.NEW_LINE.getLetter()
+                + Message.EXPECTED_PRICE_HEADER.getMessage()
+                + CommonLetter.NEW_LINE.getLetter()
+                + expectedPrice
+                + "원");
+    }
+
+    public void printBadge(String badge) {
+        ConsoleUtil.println(
+            CommonLetter.NEW_LINE.getLetter()
+                + Message.BADGE_HEADER.getMessage()
+                + CommonLetter.NEW_LINE.getLetter()
+                + badge);
+    }
 }
