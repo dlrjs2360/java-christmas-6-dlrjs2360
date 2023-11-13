@@ -44,4 +44,10 @@ public class OutputView {
         }
         ConsoleUtil.println(Message.DISCOUNT_NON_PROFIT.getMessage());
     }
+
+    public void printDiscountTable(String discountTable) {
+        ConsoleUtil.print(CommonLetter.NEW_LINE.getLetter());
+        ConsoleUtil.println(Message.DISCOUNT_TABLE_HEADER.getMessage());
+        ConsoleUtil.print(discountTable);
+    }
 }

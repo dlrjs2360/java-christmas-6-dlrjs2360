@@ -1,19 +1,30 @@
 package christmas.constant;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 public enum Calender {
-    JANUARY(1,31), FEBRUARY(2,28), MARCH(3,31), APRIL(4,30), MAY(5,31), JUNE(6,30),
-    JULY(7,31), AUGUST(8,31), SEPTEMBER(9,30), OCTOBER(10,31), NOVEMBER(11,30), DECEMBER(12,31);
+    JANUARY(1),
+    FEBRUARY(2),
+    MARCH(3),
+    APRIL(4),
+    MAY(5),
+    JUNE(6),
+    JULY(7),
+    AUGUST(8),
+    SEPTEMBER(9),
+    OCTOBER(10),
+    NOVEMBER(11),
+    DECEMBER(12);
 
     private final int month;
-    private final int end;
 
-    Calender(int month, int end) {
+    Calender(int month) {
         this.month = month;
-        this.end = end;
     }
 
     public int getEnd() {
-        return end;
+        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(), month, 1).lengthOfMonth();
     }
 
     public static Calender of(int month) {
@@ -24,4 +35,9 @@ public enum Calender {
         }
         throw new IllegalArgumentException(ErrorMessage.INVALID_EVENT_DATE.getMessage());
     }
+
+    public static DayOfWeek getDayOfWeek(int day) {
+        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(),EventDate.EVENT_MONTH.getNumber(), day).getDayOfWeek();
+    }
+
 }

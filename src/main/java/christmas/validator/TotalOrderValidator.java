@@ -3,6 +3,7 @@ package christmas.validator;
 import christmas.constant.ErrorMessage;
 import christmas.constant.EventDate;
 import christmas.constant.Menu;
+import christmas.constant.Menu.Category;
 import christmas.constant.OrderLimit;
 import christmas.domain.Order;
 import java.util.HashMap;
@@ -14,7 +15,12 @@ public class TotalOrderValidator implements Validator<List<Order>> {
 
     int totalAmount;
     HashMap<String, Boolean> menuCheck;
-    Set<Menu.Category> categoryCheck;
+
+    public HashMap<Category, Integer> getCategoryCheck() {
+        return categoryCheck;
+    }
+
+    HashMap<Menu.Category, Integer> categoryCheck;
 
     @Override
     public void validate(List<Order> orders) {
@@ -24,7 +30,8 @@ public class TotalOrderValidator implements Validator<List<Order>> {
             validateTotalAmount(totalAmount + order.getAmount());
             totalAmount += order.getAmount();
             menuCheck.put(order.getMenu().getName(), true);
-            categoryCheck.add(order.getMenu().getCategory());
+            categoryCheck.put(order.getMenu().getCategory(),
+            categoryCheck.getOrDefault(order.getMenu().getCategory(), 0) + order.getAmount());
         }
         validateOnlyDrink();
     }
@@ -32,7 +39,7 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     private void init() {
         totalAmount = 0;
         menuCheck = new HashMap<>();
-        categoryCheck = new HashSet<>();
+        categoryCheck = new HashMap<>();
     }
 
     private void validateTotalAmount(int totalAmount) {
@@ -48,7 +55,7 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     }
 
     private void validateOnlyDrink() {
-        if (categoryCheck.size() == 1 && categoryCheck.contains(Menu.Category.DRINK)) {
+        if (categoryCheck.keySet().size() == 1 && categoryCheck.containsKey(Menu.Category.DRINK)) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

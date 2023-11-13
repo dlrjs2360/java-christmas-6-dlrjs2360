@@ -9,7 +9,8 @@ public enum Message {
     TOTAL_ORDER_HEADER("<주문 내역>"),
     TOTAL_PRICE_HEADER("<할인 전 총주문 금액>"),
     DISCOUNT_NON_PROFIT("없음"),
-    GIFT_HEADER("<증정 메뉴>");
+    GIFT_HEADER("<증정 메뉴>"),
+    DISCOUNT_TABLE_HEADER("<혜택 내역>");
 
     private final String message;
 

@@ -1,15 +1,19 @@
 package christmas.domain;
 
 import christmas.constant.Menu;
+import christmas.constant.Menu.Category;
 import christmas.validator.TotalOrderValidator;
+import java.util.HashMap;
 import java.util.List;
 
 public class TotalOrder {
 
     private final List<Order> orders;
+    private final HashMap<Category, Integer> categoryChecker;
 
     public TotalOrder(List<Order> orders, TotalOrderValidator totalOrderValidator) {
         validate(orders, totalOrderValidator);
+        this.categoryChecker = totalOrderValidator.getCategoryCheck();
         this.orders = orders;
     }
 
@@ -30,6 +34,10 @@ public class TotalOrder {
         return orders.stream()
             .mapToInt(Order::getPrice)
             .sum();
+    }
+
+    public HashMap<Category, Integer> getCategoryChecker() {
+        return categoryChecker;
     }
 
 }

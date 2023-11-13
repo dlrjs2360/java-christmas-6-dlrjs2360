@@ -49,6 +49,7 @@ public class EventController {
         initDiscountController();
         printTotalPrice();
         printGit();
+        printDiscountTable();
     }
 
     void introduceEvent() {
@@ -88,7 +89,7 @@ public class EventController {
     }
 
     void initDiscountController() {
-        discountController = new DiscountController(totalOrder);
+        discountController = new DiscountController(totalOrder,reservation.getReservationDate());
     }
 
     private void printTotalPrice() {
@@ -97,6 +98,10 @@ public class EventController {
 
     private void printGit() {
         outputView.printGift(discountController.canGetGift());
+    }
+
+    private void printDiscountTable() {
+        outputView.printDiscountTable(discountController.initDiscountTable());
     }
 
 }
