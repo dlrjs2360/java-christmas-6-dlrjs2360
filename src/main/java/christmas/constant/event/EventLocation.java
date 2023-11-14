@@ -13,4 +13,12 @@ public enum EventLocation {
     public String getName() {
         return name;
     }
+
+    public static String getLocationName() {
+        return LOCATION_NAME.getName();
+    }
+
+    public static String getLocationCategory() {
+        return LOCATION_CATEGORY.getName();
+    }
 }

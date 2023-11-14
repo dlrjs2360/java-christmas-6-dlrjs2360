@@ -9,12 +9,13 @@ public enum SpecialDay {
         this.days = days;
     }
 
-    public boolean isSpecialDay(int day) {
-        for (int specialDay : days) {
+    public static boolean isSpecialDay(int day) {
+        for (int specialDay : SPECIAL_DAY.days) {
             if (specialDay == day) {
                 return true;
             }
         }
         return false;
     }
+
 }

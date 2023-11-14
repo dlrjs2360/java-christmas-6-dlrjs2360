@@ -26,7 +26,7 @@ public enum Calender {
     }
 
     public int getEnd() {
-        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(), month, 1).lengthOfMonth();
+        return LocalDate.of(EventDate.eventYear(), month, 1).lengthOfMonth();
     }
 
     public static Calender of(int month) {
@@ -35,12 +35,12 @@ public enum Calender {
                 return calender;
             }
         }
-        throw new IllegalArgumentException(ErrorMessage.INVALID_EVENT_DATE.getMessage());
+        throw new IllegalArgumentException(ErrorMessage.getInvalidEventDateMessage());
     }
 
     public static DayOfWeek getDayOfWeek(int day) {
-        return LocalDate.of(EventDate.EVENT_YEAR.getNumber(),
-            EventDate.EVENT_MONTH.getNumber(), day).getDayOfWeek();
+        return LocalDate.of(EventDate.eventYear(),
+            EventDate.eventMonth(), day).getDayOfWeek();
     }
 
 }

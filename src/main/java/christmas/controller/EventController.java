@@ -123,6 +123,6 @@ public class EventController {
 
     private List<String> separateOrderInput() {
         return ParseUtil.parseToList(inputView.askForMenuAndAmount(),
-            CommonLetter.ORDER_SEPARATOR.getLetter());
+            CommonLetter.orderSeparator());
     }
 }

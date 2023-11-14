@@ -12,6 +12,18 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return "[ERROR]"+message;
+        return "[ERROR] "+message;
+    }
+
+    public static String getInvalidOrderMessage() {
+        return INVALID_ORDER.getMessage();
+    }
+
+    public static String getInvalidReservationDateMessage() {
+        return INVALID_RESERVATION_DATE.getMessage();
+    }
+
+    public static String getInvalidEventDateMessage() {
+        return INVALID_EVENT_DATE.getMessage();
     }
 }

@@ -43,8 +43,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return menu.getMenu().getName() + CommonLetter.SPACE.getLetter() +
-            amount.getAmount() + "개" + CommonLetter.NEW_LINE.getLetter();
+        return menu.getMenu().getName() + CommonLetter.space() +
+            amount.getAmount() + "개" + CommonLetter.newLine();
     }
 
     public int getPrice() {
@@ -52,6 +52,6 @@ public class Order {
     }
 
     private String[] parseOrderInfo(String orderInput) {
-        return ParseUtil.parseToArray(orderInput, CommonLetter.MENU_AMOUNT_SEPARATOR.getLetter());
+        return ParseUtil.parseToArray(orderInput, CommonLetter.menuAmountSeparator());
     }
 }

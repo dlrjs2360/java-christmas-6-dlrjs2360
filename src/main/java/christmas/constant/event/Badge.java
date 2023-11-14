@@ -31,7 +31,7 @@ public enum Badge {
                 return badge.getName();
             }
         }
-        return Message.DISCOUNT_NON_PROFIT.getMessage();
+        return Message.nonProfit();
     }
 
     public static Badge[] sortByPrice() {

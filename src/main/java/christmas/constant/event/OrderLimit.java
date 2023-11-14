@@ -13,4 +13,12 @@ public enum OrderLimit {
     public int getNumber() {
         return number;
     }
+
+    public static int orderAmountMin() {
+        return ORDER_AMOUNT_MIN.getNumber();
+    }
+
+    public static int orderAmountMax() {
+        return ORDER_AMOUNT_MAX.getNumber();
+    }
 }

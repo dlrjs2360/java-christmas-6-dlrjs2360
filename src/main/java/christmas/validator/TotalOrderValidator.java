@@ -12,18 +12,17 @@ public class TotalOrderValidator implements Validator<List<Order>> {
 
     int totalAmount;
     HashMap<String, Boolean> menuCheck;
+    HashMap<Menu.Category, Integer> categoryCheck;
 
     public HashMap<Category, Integer> getCategoryCheck() {
         return categoryCheck;
     }
 
-    HashMap<Menu.Category, Integer> categoryCheck;
-
     @Override
     public void validate(List<Order> orders) {
         init();
         for (Order order : orders) {
-            validateMenuCheck(order); // 디미터 법칙 위반
+            validateMenuCheck(order);
             validateTotalAmount(totalAmount + order.getAmount());
             addTotalAmount(order);
             addMenu(order);
@@ -53,7 +52,7 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     }
 
     private void validateTotalAmount(int totalAmount) {
-        if (totalAmount > OrderLimit.ORDER_AMOUNT_MAX.getNumber()) {
+        if (totalAmount > OrderLimit.orderAmountMax()) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }
@@ -65,7 +64,7 @@ public class TotalOrderValidator implements Validator<List<Order>> {
     }
 
     private void validateOnlyDrink() {
-        if (categoryCheck.keySet().size() == 1 && categoryCheck.containsKey(Menu.Category.DRINK)) {
+        if (categoryCheck.keySet().size() == 1 && categoryCheck.containsKey(Category.DRINK)) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

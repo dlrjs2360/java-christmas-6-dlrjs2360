@@ -20,4 +20,8 @@ public enum DiscountAmount {
     public static int calculateChristmasDiscount(int day) {
         return CHRISTMAS_DEFAULT.getAmount() + CHRISTMAS_D_DAY_UNIT.getAmount() * (day-1);
     }
+
+    public static int getSpecialDayDiscount() {
+        return SPECIAL_DAY.getAmount();
+    }
 }

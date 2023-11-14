@@ -10,7 +10,7 @@ public class OrderMenuValidator implements Validator<String>{
         isInMenu(data);
     }
 
-    void isInMenu(String menu) {
+    private void isInMenu(String menu) {
         if (!Menu.isValueOf(menu)) {
             throwException(ErrorMessage.INVALID_ORDER);
         }

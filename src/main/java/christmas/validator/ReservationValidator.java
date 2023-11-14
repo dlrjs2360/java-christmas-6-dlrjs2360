@@ -11,7 +11,7 @@ public class ReservationValidator implements Validator<String> {
         isInRange(ParseUtil.parseToInt(reservationNumber));
     }
 
-    public void isNumeric(String reservationNumber) {
+    private void isNumeric(String reservationNumber) {
         try {
             Integer.parseInt(reservationNumber);
         } catch (NumberFormatException e) {
@@ -19,9 +19,9 @@ public class ReservationValidator implements Validator<String> {
         }
     }
 
-    public void isInRange(int reservationNumber) {
-        if (reservationNumber < EventDate.EVENT_START_DAY.getNumber()
-            || reservationNumber > EventDate.EVENT_END_DAY.getNumber()) {
+    private void isInRange(int reservationNumber) {
+        if (reservationNumber < EventDate.eventStartDay()
+            || reservationNumber > EventDate.eventEndDay()) {
             throwException(ErrorMessage.INVALID_RESERVATION_DATE);
         }
     }

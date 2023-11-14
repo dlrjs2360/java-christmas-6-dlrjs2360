@@ -14,30 +14,27 @@ import java.util.HashMap;
 
 public class DiscountController {
 
-    private final TotalOrder totalOrder;
     private final int day;
     private final int totalPrice;
-    private final HashMap<DiscountCategory, Integer> discountTable = new HashMap<>();
+    private final TotalOrder totalOrder;
+    private final HashMap<DiscountCategory, Integer> discountTable;
 
     public DiscountController(TotalOrder totalOrder, int day) {
         this.day = day;
         this.totalOrder = totalOrder;
         this.totalPrice = totalOrder.getTotalPrice();
-    }
-
-    private boolean canGetDiscount() {
-        return DiscountCriteria.DISCOUNT_START.canGetDiscount(totalPrice);
+        this.discountTable = new HashMap<>();
     }
 
     public boolean canGetGift() {
-        return DiscountCriteria.GIFT.canGetGift(totalPrice);
+        return DiscountCriteria.canGetGift(totalPrice);
     }
 
     public int getNotDiscountedPrice() {
         return totalPrice;
     }
 
-    public HashMap<DiscountCategory,Integer> initDiscountTable() {
+    public HashMap<DiscountCategory, Integer> initDiscountTable() {
         calculateBenefits();
         return discountTable;
     }
@@ -51,9 +48,13 @@ public class DiscountController {
     public int getExpectedPrice() {
         int giftPrice = 0;
         if (canGetGift()) {
-            giftPrice = Gift.GIFT_MENU.getGiftPrice();
+            giftPrice = Gift.getGiftPrice();
         }
         return totalPrice - getTotalDiscountedPrice() + giftPrice;
+    }
+
+    public String getBadge() {
+        return Badge.getBadge(getTotalDiscountedPrice());
     }
 
     private void calculateBenefits() {
@@ -85,15 +86,19 @@ public class DiscountController {
         }
     }
 
+    private boolean canGetDiscount() {
+        return DiscountCriteria.canGetDiscount(totalPrice);
+    }
+
     private void calculateSpecialDayDiscount() {
-        if (SpecialDay.SPECIAL_DAY.isSpecialDay(day)) {
-            discountTable.put(DiscountCategory.SPECIAL_DAY, DiscountAmount.SPECIAL_DAY.getAmount());
+        if (SpecialDay.isSpecialDay(day)) {
+            discountTable.put(DiscountCategory.SPECIAL_DAY, DiscountAmount.getSpecialDayDiscount());
         }
     }
 
     private void calculateGiftDiscount() {
         if (canGetGift()) {
-            discountTable.put(DiscountCategory.GIFT_EVENT, Gift.GIFT_MENU.getGiftPrice());
+            discountTable.put(DiscountCategory.GIFT_EVENT, Gift.getGiftPrice());
         }
     }
 
@@ -102,7 +107,8 @@ public class DiscountController {
     }
 
     private int getWeekDiscount(Category category) {
-        return getDayOfWeek().getDiscountAmount() * totalOrder.getCategoryChecker().getOrDefault(category, 0);
+        return getDayOfWeek().getDiscountAmount() * totalOrder.getCategoryChecker()
+            .getOrDefault(category, 0);
     }
 
     private boolean isWeekend() {
@@ -111,10 +117,6 @@ public class DiscountController {
 
     private DayOfWeek getDayOfWeek() {
         return DayOfWeek.valueOf(Calender.getDayOfWeek(day).toString());
-    }
-
-    public String getBadge() {
-        return Badge.getBadge(getTotalDiscountedPrice());
     }
 
 

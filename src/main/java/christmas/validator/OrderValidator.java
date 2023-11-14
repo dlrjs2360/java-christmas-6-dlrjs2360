@@ -8,14 +8,14 @@ public class OrderValidator implements Validator<String> {
         isSplitWithSeparator(order);
     }
 
-    void isSplitWithSeparator(String order) {
+    private void isSplitWithSeparator(String order) {
         if (splitOrder(order).length != 2) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }
 
     private String[] splitOrder(String order) {
-        return order.split(CommonLetter.MENU_AMOUNT_SEPARATOR.getLetter());
+        return order.split(CommonLetter.menuAmountSeparator());
     }
 
 }

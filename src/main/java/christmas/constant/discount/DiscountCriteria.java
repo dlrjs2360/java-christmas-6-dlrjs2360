@@ -15,11 +15,11 @@ public enum DiscountCriteria {
         return price;
     }
 
-    public boolean canGetGift(int totalPrice) {
+    public static boolean canGetGift(int totalPrice) {
         return totalPrice >= GIFT.getPrice();
     }
 
-    public boolean canGetDiscount(int totalPrice) {
+    public static boolean canGetDiscount(int totalPrice) {
         return totalPrice >= DISCOUNT_START.getPrice();
     }
 }

@@ -12,59 +12,55 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-    private final String NEW_LINE = CommonLetter.NEW_LINE.getLetter();
-    private final String NON_PROFIT = Message.DISCOUNT_NON_PROFIT.getMessage();
-
     public void printTotalOrder(TotalOrder totalOrder) {
-        ConsoleUtil.printMessage(Message.TOTAL_ORDER_HEADER.getMessage()
-            + NEW_LINE + totalOrder.toString());
+        ConsoleUtil.printMessage(Message.totalOrderHeader()
+            + CommonLetter.newLine() + totalOrder.toString());
     }
 
     public void printPreBenefitMessage(int reservationDate) {
-        ConsoleUtil.printMessage(EventDate.EVENT_MONTH.getNumber()
-            + "월 " + reservationDate + "일" + Message.PRE_BENEFIT_INTRODUCE.getMessage());
+        ConsoleUtil.printMessage(EventDate.eventMonth()
+            + "월 " + reservationDate + "일" + Message.preBenefitIntroduce());
     }
 
     public void printTotalPrice(int totalPrice) {
-        ConsoleUtil.printMessage(Message.TOTAL_PRICE_HEADER.getMessage() + NEW_LINE
+        ConsoleUtil.printMessage(Message.totalPriceHeader() + CommonLetter.newLine()
             + ParseUtil.parseToThousandUnit(totalPrice));
     }
 
     public void printGift(boolean canGetGift) {
-        ConsoleUtil.printMessage(Message.GIFT_HEADER.getMessage() + NEW_LINE
+        ConsoleUtil.printMessage(Message.giftHeader() + CommonLetter.newLine()
             + parseGift(canGetGift));
     }
 
     public void printDiscountTable(HashMap<DiscountCategory, Integer> discountTable) {
-        ConsoleUtil.printMessage(Message.DISCOUNT_TABLE_HEADER.getMessage() + NEW_LINE
+        ConsoleUtil.printMessage(Message.discountTableHeader() + CommonLetter.newLine()
             + parseDiscountTable(discountTable));
     }
 
     public void printTotalDiscountPrice(int totalDiscountedPrice) {
-        ConsoleUtil.printMessage(Message.TOTAL_DISCOUNT_PRICE_HEADER.getMessage() + NEW_LINE
+        ConsoleUtil.printMessage(Message.totalDiscountPriceHeader() + CommonLetter.newLine()
             + parseTotalDiscountPrice(totalDiscountedPrice));
     }
 
     public void printExpectedPrice(int expectedPrice) {
-        ConsoleUtil.printMessage(Message.EXPECTED_PRICE_HEADER.getMessage() + NEW_LINE
+        ConsoleUtil.printMessage(Message.expectedPriceHeader() + CommonLetter.newLine()
             + ParseUtil.parseToThousandUnit(expectedPrice));
     }
 
     public void printBadge(String badge) {
-        ConsoleUtil.printMessage(Message.BADGE_HEADER.getMessage() + NEW_LINE + badge);
+        ConsoleUtil.printMessage(Message.badgeHeader() + CommonLetter.newLine() + badge);
     }
 
     private String parseDiscountTable(HashMap<DiscountCategory, Integer> discountTable) {
         if (discountTable.isEmpty()) {
-            return NON_PROFIT;
+            return Message.nonProfit();
         }
         return arrangeDiscountTable(discountTable);
     }
 
     private String parseGift(boolean canGetGift) {
         if (!canGetGift) {
-            return NON_PROFIT;
+            return Message.nonProfit();
         }
         return Gift.GIFT_MENU.toString();
     }
@@ -73,7 +69,7 @@ public class OutputView {
         return discountTable.entrySet().stream()
             .map(entry -> entry.getKey().getName() + " " + ParseUtil.addMinusSign(
                     ParseUtil.parseToThousandUnit(entry.getValue())))
-            .collect(Collectors.joining(CommonLetter.NEW_LINE.getLetter()));
+            .collect(Collectors.joining(CommonLetter.newLine()));
     }
 
     private String parseTotalDiscountPrice(int totalDiscountedPrice) {

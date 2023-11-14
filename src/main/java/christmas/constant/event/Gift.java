@@ -13,8 +13,8 @@ public enum Gift {
         this.giftAmount = giftAmount;
     }
 
-    public int getGiftPrice() {
-        return menu.getPrice();
+    public static int getGiftPrice() {
+        return GIFT_MENU.menu.getPrice();
     }
 
     @Override

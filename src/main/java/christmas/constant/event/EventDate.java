@@ -22,4 +22,24 @@ public enum EventDate {
     private int getEventMonthEndDay() {
         return Calender.of(number).getEnd();
     }
+
+    public static int eventMonth() {
+        return EVENT_MONTH.getNumber();
+    }
+
+    public static int eventStartDay() {
+        return EVENT_START_DAY.getNumber();
+    }
+
+    public static int eventEndDay() {
+        return EVENT_END_DAY.getNumber();
+    }
+
+    public static int eventDday() {
+        return EVENT_D_DAY.getNumber();
+    }
+
+    public static int eventYear() {
+        return EVENT_YEAR.getNumber();
+    }
 }

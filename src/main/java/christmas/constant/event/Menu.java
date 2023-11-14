@@ -73,6 +73,6 @@ public enum Menu {
                 return menu;
             }
         }
-        throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getMessage());
+        throw new IllegalArgumentException(ErrorMessage.getInvalidOrderMessage());
     }
 }

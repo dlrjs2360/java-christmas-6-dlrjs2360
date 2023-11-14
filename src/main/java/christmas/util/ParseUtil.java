@@ -25,7 +25,7 @@ public class ParseUtil {
     }
 
     public static String addMinusSign(String price) {
-        return CommonLetter.MINUS.getLetter() + price;
+        return CommonLetter.minus() + price;
     }
 
 

@@ -11,7 +11,7 @@ public class OrderAmountValidator implements Validator<String>{
         isInRange(Integer.parseInt(data));
     }
 
-    void isNumeric(String orderAmount) {
+    private void isNumeric(String orderAmount) {
         try {
             Integer.parseInt(orderAmount);
         } catch (NumberFormatException e) {
@@ -19,9 +19,9 @@ public class OrderAmountValidator implements Validator<String>{
         }
     }
 
-    void isInRange(int orderAmount) {
-        if (orderAmount < OrderLimit.ORDER_AMOUNT_MIN.getNumber()
-            || orderAmount > OrderLimit.ORDER_AMOUNT_MAX.getNumber()) {
+    private void isInRange(int orderAmount) {
+        if (orderAmount < OrderLimit.orderAmountMin()
+            || orderAmount > OrderLimit.orderAmountMax()) {
             throwException(ErrorMessage.INVALID_ORDER);
         }
     }

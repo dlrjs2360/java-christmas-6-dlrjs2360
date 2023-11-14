@@ -6,16 +6,16 @@ import christmas.util.ConsoleUtil;
 public class InputView {
 
     public void introduceEvent() {
-        ConsoleUtil.printMessage(Message.EVENT_INTRODUCE.getMessage());
+        ConsoleUtil.printMessage(Message.introduce());
     }
 
     public String askForReservationMonth() {
-        ConsoleUtil.printMessage(Message.ASK_FOR_RESERVATION_MONTH.getMessage());
+        ConsoleUtil.printMessage(Message.askForReservationDay());
         return ConsoleUtil.input();
     }
 
     public String askForMenuAndAmount() {
-        ConsoleUtil.printMessage(Message.ASK_FOR_MENU_AND_AMOUNT.getMessage());
+        ConsoleUtil.printMessage(Message.askForMenuAndAmount());
         return ConsoleUtil.input();
     }
 }
