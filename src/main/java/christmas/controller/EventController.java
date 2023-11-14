@@ -17,18 +17,18 @@ import java.util.List;
 
 public class EventController {
 
-    InputView inputView;
-    OutputView outputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
-    ReservationValidator reservationValidator;
-    OrderValidator orderValidator;
-    OrderAmountValidator orderAmountValidator;
-    OrderMenuValidator orderMenuValidator;
-    TotalOrderValidator totalOrderValidator;
+    private final ReservationValidator reservationValidator;
+    private final OrderValidator orderValidator;
+    private final OrderAmountValidator orderAmountValidator;
+    private final OrderMenuValidator orderMenuValidator;
+    private final TotalOrderValidator totalOrderValidator;
 
-    Reservation reservation;
-    TotalOrder totalOrder;
-    DiscountController discountController;
+    private Reservation reservation;
+    private TotalOrder totalOrder;
+    private DiscountController discountController;
 
     public EventController() {
         this.inputView = new InputView();
@@ -70,8 +70,8 @@ public class EventController {
 
     private void initOrder() {
         try {
-            totalOrder = new TotalOrder(
-                parseSeperatedOrderInput(separateOrderInput()), totalOrderValidator);
+            totalOrder = new TotalOrder(separateOrderInput(), totalOrderValidator, orderValidator,
+                orderMenuValidator, orderAmountValidator);
         } catch (IllegalArgumentException e) {
             ConsoleUtil.printMessage(e.getMessage());
             initOrder();
@@ -87,7 +87,7 @@ public class EventController {
     }
 
     private void initDiscountController() {
-        discountController = new DiscountController(totalOrder,reservation.getReservationDate());
+        discountController = new DiscountController(totalOrder, reservation.getReservationDate());
     }
 
     private void printTotalPrice() {
@@ -112,13 +112,6 @@ public class EventController {
 
     private void printBadge() {
         outputView.printBadge(discountController.getBadge());
-    }
-
-    private List<Order> parseSeperatedOrderInput(List<String> seperatedOrderInput) {
-        return seperatedOrderInput.stream()
-            .map(purchase -> new Order(purchase, orderValidator, orderMenuValidator,
-                orderAmountValidator))
-            .toList();
     }
 
     private List<String> separateOrderInput() {

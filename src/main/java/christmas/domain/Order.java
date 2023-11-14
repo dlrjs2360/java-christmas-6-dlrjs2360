@@ -7,6 +7,7 @@ import christmas.util.ParseUtil;
 import christmas.validator.OrderAmountValidator;
 import christmas.validator.OrderMenuValidator;
 import christmas.validator.OrderValidator;
+import java.util.List;
 
 public class Order {
 
@@ -21,7 +22,7 @@ public class Order {
         this.amount = new OrderAmount(validatedOrderInfo[1], orderAmountValidator);
     }
 
-    void validate(String purchase, OrderValidator orderValidator) {
+    private void validate(String purchase, OrderValidator orderValidator) {
         orderValidator.validate(purchase);
     }
 
@@ -54,4 +55,5 @@ public class Order {
     private String[] parseOrderInfo(String orderInput) {
         return ParseUtil.parseToArray(orderInput, CommonLetter.menuAmountSeparator());
     }
+
 }

@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public enum Badge {
-    SANTA("산타",5000),
+    STAR("별",5000),
     TREE("트리", 10000),
-    STAR("별", 20000);
+    SANTA("산타", 20000);
 
     private final String name;
     private final int price;

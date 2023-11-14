@@ -12,7 +12,7 @@ public class OrderMenu {
         this.menu = Menu.of(menu);
     }
 
-    void validate(String menu, OrderMenuValidator orderMenuValidator) {
+    private void validate(String menu, OrderMenuValidator orderMenuValidator) {
         orderMenuValidator.validate(menu);
     }
 

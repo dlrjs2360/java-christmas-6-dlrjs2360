@@ -12,7 +12,7 @@ public class Reservation {
         this.reservationDate = ParseUtil.parseToInt(reservationDate);
     }
 
-    void validate(String reservationNumber, ReservationValidator reservationValidator) {
+    private void validate(String reservationNumber, ReservationValidator reservationValidator) {
         reservationValidator.validate(reservationNumber);
     }
 

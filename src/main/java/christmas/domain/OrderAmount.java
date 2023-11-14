@@ -11,7 +11,7 @@ public class OrderAmount {
         this.amount = ParseUtil.parseToInt(amount);
     }
 
-    void validate(String amount, OrderAmountValidator orderAmountValidator) {
+    private void validate(String amount, OrderAmountValidator orderAmountValidator) {
         orderAmountValidator.validate(amount);
     }
 
