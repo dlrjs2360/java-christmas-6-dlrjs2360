@@ -4,14 +4,18 @@ import christmas.util.ParseUtil;
 import christmas.validator.OrderAmountValidator;
 
 public class OrderAmount {
+    private static final OrderAmountValidator orderAmountValidator;
     private final int amount;
-
-    public OrderAmount(String amount, OrderAmountValidator orderAmountValidator) {
-        validate(amount, orderAmountValidator);
+    public OrderAmount(String amount) {
+        validate(amount);
         this.amount = ParseUtil.parseToInt(amount);
     }
 
-    private void validate(String amount, OrderAmountValidator orderAmountValidator) {
+    static {
+        orderAmountValidator = new OrderAmountValidator();
+    }
+
+    private void validate(String amount) {
         orderAmountValidator.validate(amount);
     }
 

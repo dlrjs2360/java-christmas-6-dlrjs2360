@@ -11,18 +11,21 @@ import java.util.List;
 
 public class Order {
 
+    private final static OrderValidator orderValidator;
     private final OrderMenu menu;
     private final OrderAmount amount;
 
-    public Order(String orderInput, OrderValidator orderValidator,
-        OrderMenuValidator orderMenuValidator, OrderAmountValidator orderAmountValidator) {
-        validate(orderInput, orderValidator);
+    public Order(String orderInput){
         String[] validatedOrderInfo = parseOrderInfo(orderInput);
-        this.menu = new OrderMenu(validatedOrderInfo[0], orderMenuValidator);
-        this.amount = new OrderAmount(validatedOrderInfo[1], orderAmountValidator);
+        this.menu = new OrderMenu(validatedOrderInfo[0]);
+        this.amount = new OrderAmount(validatedOrderInfo[1]);
     }
 
-    private void validate(String purchase, OrderValidator orderValidator) {
+    static {
+        orderValidator = new OrderValidator();
+    }
+
+    private void validate(String purchase) {
         orderValidator.validate(purchase);
     }
 

@@ -10,20 +10,22 @@ import java.util.List;
 
 public class TotalOrder {
 
+    private static final TotalOrderValidator totalOrderValidator;
     private final List<Order> orders;
     private final HashMap<Category, Integer> categoryChecker;
 
-    public TotalOrder(List<String> seperatedOrder, TotalOrderValidator totalOrderValidator
-        , OrderValidator orderValidator, OrderMenuValidator orderMenuValidator,
-        OrderAmountValidator orderAmountValidator) {
-        List<Order> parsedOrders = initOrders(seperatedOrder, orderValidator, orderMenuValidator,
-            orderAmountValidator);
-        validate(parsedOrders, totalOrderValidator);
+    public TotalOrder(List<String> seperatedOrder) {
+        List<Order> parsedOrders = initOrders(seperatedOrder);
+        validate(parsedOrders);
         this.categoryChecker = totalOrderValidator.getCategoryCheck();
         this.orders = parsedOrders;
     }
 
-    private void validate(List<Order> orders, TotalOrderValidator totalOrderValidator) {
+    static {
+        totalOrderValidator = new TotalOrderValidator();
+    }
+
+    private void validate(List<Order> orders) {
         totalOrderValidator.validate(orders);
     }
 
@@ -46,11 +48,8 @@ public class TotalOrder {
         return categoryChecker;
     }
 
-    private List<Order> initOrders(List<String> orderInput, OrderValidator orderValidator,
-        OrderMenuValidator orderMenuValidator, OrderAmountValidator orderAmountValidator) {
-        return orderInput.stream().map(
-                order -> new Order(order, orderValidator, orderMenuValidator, orderAmountValidator))
-            .toList();
+    private List<Order> initOrders(List<String> orderInput) {
+        return orderInput.stream().map(Order::new).toList();
     }
 
 }

@@ -6,13 +6,17 @@ import christmas.validator.ReservationValidator;
 public class Reservation {
 
     private final int reservationDate;
-
-    public Reservation(String reservationDate, ReservationValidator reservationValidator) {
-        validate(reservationDate, reservationValidator);
+    private static final ReservationValidator reservationValidator;
+    public Reservation(String reservationDate) {
+        validate(reservationDate);
         this.reservationDate = ParseUtil.parseToInt(reservationDate);
     }
 
-    private void validate(String reservationNumber, ReservationValidator reservationValidator) {
+    static {
+        reservationValidator = new ReservationValidator();
+    }
+
+    private void validate(String reservationNumber) {
         reservationValidator.validate(reservationNumber);
     }
 

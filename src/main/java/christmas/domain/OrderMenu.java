@@ -6,13 +6,17 @@ import christmas.validator.OrderMenuValidator;
 
 public class OrderMenu {
     private final Menu menu;
-
-    public OrderMenu(String menu, OrderMenuValidator orderMenuValidator) {
-        validate(menu, orderMenuValidator);
+    private static final OrderMenuValidator orderMenuValidator;
+    public OrderMenu(String menu) {
+        validate(menu);
         this.menu = Menu.of(menu);
     }
 
-    private void validate(String menu, OrderMenuValidator orderMenuValidator) {
+    static {
+        orderMenuValidator = new OrderMenuValidator();
+    }
+
+    private void validate(String menu) {
         orderMenuValidator.validate(menu);
     }
 

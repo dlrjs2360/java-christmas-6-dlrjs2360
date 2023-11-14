@@ -2,15 +2,9 @@ package christmas.controller;
 
 import christmas.constant.message.CommonLetter;
 import christmas.domain.TotalOrder;
-import christmas.domain.Order;
 import christmas.domain.Reservation;
 import christmas.util.ConsoleUtil;
 import christmas.util.ParseUtil;
-import christmas.validator.OrderAmountValidator;
-import christmas.validator.OrderMenuValidator;
-import christmas.validator.OrderValidator;
-import christmas.validator.ReservationValidator;
-import christmas.validator.TotalOrderValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.List;
@@ -20,12 +14,6 @@ public class EventController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    private final ReservationValidator reservationValidator;
-    private final OrderValidator orderValidator;
-    private final OrderAmountValidator orderAmountValidator;
-    private final OrderMenuValidator orderMenuValidator;
-    private final TotalOrderValidator totalOrderValidator;
-
     private Reservation reservation;
     private TotalOrder totalOrder;
     private DiscountController discountController;
@@ -33,11 +21,6 @@ public class EventController {
     public EventController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.reservationValidator = new ReservationValidator();
-        this.orderValidator = new OrderValidator();
-        this.orderAmountValidator = new OrderAmountValidator();
-        this.orderMenuValidator = new OrderMenuValidator();
-        this.totalOrderValidator = new TotalOrderValidator();
     }
 
     public void run() {
@@ -61,7 +44,7 @@ public class EventController {
 
     private void initReservation() {
         try {
-            reservation = new Reservation(inputView.askForReservationMonth(), reservationValidator);
+            reservation = new Reservation(inputView.askForReservationMonth());
         } catch (IllegalArgumentException e) {
             ConsoleUtil.printMessage(e.getMessage());
             initReservation();
@@ -70,8 +53,7 @@ public class EventController {
 
     private void initOrder() {
         try {
-            totalOrder = new TotalOrder(separateOrderInput(), totalOrderValidator, orderValidator,
-                orderMenuValidator, orderAmountValidator);
+            totalOrder = new TotalOrder(separateOrderInput());
         } catch (IllegalArgumentException e) {
             ConsoleUtil.printMessage(e.getMessage());
             initOrder();
