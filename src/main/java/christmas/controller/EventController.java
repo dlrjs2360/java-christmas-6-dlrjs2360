@@ -24,14 +24,22 @@ public class EventController {
     }
 
     public void run() {
+        initEvent();
+        printBenefits();
+    }
+
+    private void initEvent() {
         introduceEvent();
         initReservation();
         initOrder();
+    }
+
+    private void printBenefits() {
         printPreBenefitMessage();
         printTotalOrder();
         initDiscountController();
         printTotalPrice();
-        printGit();
+        printGift();
         printDiscountTable();
         printTotalDiscountPrice();
         printExpectedPrice();
@@ -76,7 +84,7 @@ public class EventController {
         outputView.printTotalPrice(discountController.getNotDiscountedPrice());
     }
 
-    private void printGit() {
+    private void printGift() {
         outputView.printGift(discountController.canGetGift());
     }
 

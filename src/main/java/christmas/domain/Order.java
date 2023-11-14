@@ -16,6 +16,7 @@ public class Order {
     private final OrderAmount amount;
 
     public Order(String orderInput){
+        validate(orderInput);
         String[] validatedOrderInfo = parseOrderInfo(orderInput);
         this.menu = new OrderMenu(validatedOrderInfo[0]);
         this.amount = new OrderAmount(validatedOrderInfo[1]);
