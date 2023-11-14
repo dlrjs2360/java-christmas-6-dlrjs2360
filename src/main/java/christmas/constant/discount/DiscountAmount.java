@@ -1,5 +1,7 @@
 package christmas.constant.discount;
 
+import christmas.constant.event.EventDate;
+
 public enum DiscountAmount {
     WEEKDAY(2_023),
     WEEKEND(2_023),
@@ -18,7 +20,8 @@ public enum DiscountAmount {
     }
 
     public static int calculateChristmasDiscount(int day) {
-        return CHRISTMAS_DEFAULT.getAmount() + CHRISTMAS_D_DAY_UNIT.getAmount() * (day-1);
+        return CHRISTMAS_DEFAULT.getAmount() + CHRISTMAS_D_DAY_UNIT.getAmount() * (Math.min(
+            EventDate.eventDday(),day)-1);
     }
 
     public static int getSpecialDayDiscount() {

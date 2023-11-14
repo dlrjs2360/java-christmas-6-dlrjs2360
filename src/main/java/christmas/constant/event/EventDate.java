@@ -42,4 +42,8 @@ public enum EventDate {
     public static int eventYear() {
         return EVENT_YEAR.getNumber();
     }
+
+    public static boolean canGetDDayDiscount(int day) {
+        return day <= eventDday();
+    }
 }

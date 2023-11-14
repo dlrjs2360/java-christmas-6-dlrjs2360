@@ -6,6 +6,7 @@ import christmas.constant.calender.DayOfWeek;
 import christmas.constant.discount.DiscountAmount;
 import christmas.constant.discount.DiscountCategory;
 import christmas.constant.discount.DiscountCriteria;
+import christmas.constant.event.EventDate;
 import christmas.constant.event.Gift;
 import christmas.constant.event.Menu.Category;
 import christmas.constant.event.SpecialDay;
@@ -68,7 +69,9 @@ public class DiscountController {
     }
 
     private void calculateChristmasDiscount() {
-        discountTable.put(DiscountCategory.CHRISTMAS_EVENT, getChristmasEventDiscount());
+        if (EventDate.canGetDDayDiscount(day)) {
+            discountTable.put(DiscountCategory.CHRISTMAS_EVENT, getChristmasEventDiscount());
+        }
     }
 
     private void calculateWeekDiscount() {

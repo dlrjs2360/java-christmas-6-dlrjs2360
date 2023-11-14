@@ -67,7 +67,7 @@ public class OutputView {
 
     private String arrangeDiscountTable(HashMap<DiscountCategory, Integer> discountTable) {
         return discountTable.entrySet().stream()
-            .map(entry -> entry.getKey().getName() + " " + ParseUtil.addMinusSign(
+            .map(entry -> entry.getKey().getName() + ": " + ParseUtil.addMinusSign(
                     ParseUtil.parseToThousandUnit(entry.getValue())))
             .collect(Collectors.joining(CommonLetter.newLine()));
     }
