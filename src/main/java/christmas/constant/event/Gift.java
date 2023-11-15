@@ -1,7 +1,5 @@
 package christmas.constant.event;
 
-import christmas.constant.event.Menu;
-
 public enum Gift {
     GIFT_MENU(Menu.CHAMPAGNE, 1);
 

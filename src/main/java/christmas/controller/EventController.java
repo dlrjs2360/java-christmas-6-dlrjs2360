@@ -1,8 +1,8 @@
 package christmas.controller;
 
 import christmas.constant.message.CommonLetter;
-import christmas.domain.TotalOrder;
 import christmas.domain.Reservation;
+import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;
 import christmas.util.ParseUtil;
 import christmas.view.InputView;

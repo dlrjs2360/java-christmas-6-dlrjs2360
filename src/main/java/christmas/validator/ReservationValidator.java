@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import christmas.constant.message.ErrorMessage;
 import christmas.constant.event.EventDate;
+import christmas.constant.message.ErrorMessage;
 import christmas.util.ParseUtil;
 
 public class ReservationValidator implements Validator<String> {

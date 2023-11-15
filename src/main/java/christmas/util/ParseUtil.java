@@ -1,11 +1,8 @@
 package christmas.util;
 
-import christmas.constant.discount.DiscountCategory;
 import christmas.constant.message.CommonLetter;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ParseUtil {
     public static int parseToInt(String number) {

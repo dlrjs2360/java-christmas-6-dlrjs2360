@@ -1,9 +1,6 @@
 package christmas.domain;
 
 import christmas.constant.event.Menu.Category;
-import christmas.validator.OrderAmountValidator;
-import christmas.validator.OrderMenuValidator;
-import christmas.validator.OrderValidator;
 import christmas.validator.TotalOrderValidator;
 import java.util.HashMap;
 import java.util.List;

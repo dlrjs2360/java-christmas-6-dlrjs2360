@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import christmas.constant.message.ErrorMessage;
 import christmas.constant.event.Menu;
+import christmas.constant.message.ErrorMessage;
 
 public class OrderMenuValidator implements Validator<String>{
 

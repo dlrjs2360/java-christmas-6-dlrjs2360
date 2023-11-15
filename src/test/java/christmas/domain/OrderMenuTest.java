@@ -1,11 +1,10 @@
 package christmas.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import christmas.constant.event.Menu;
 import christmas.constant.event.Menu.Category;
-import christmas.validator.OrderMenuValidator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

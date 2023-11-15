@@ -1,9 +1,9 @@
 package christmas.view;
 
-import christmas.constant.message.CommonLetter;
 import christmas.constant.discount.DiscountCategory;
 import christmas.constant.event.EventDate;
 import christmas.constant.event.Gift;
+import christmas.constant.message.CommonLetter;
 import christmas.constant.message.Message;
 import christmas.domain.TotalOrder;
 import christmas.util.ConsoleUtil;

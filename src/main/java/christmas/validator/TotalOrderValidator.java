@@ -1,9 +1,9 @@
 package christmas.validator;
 
-import christmas.constant.message.ErrorMessage;
 import christmas.constant.event.Menu;
 import christmas.constant.event.Menu.Category;
 import christmas.constant.event.OrderLimit;
+import christmas.constant.message.ErrorMessage;
 import christmas.domain.Order;
 import java.util.HashMap;
 import java.util.List;

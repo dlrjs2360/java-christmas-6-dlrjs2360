@@ -2,16 +2,12 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import christmas.constant.event.Menu;
 import christmas.constant.event.Menu.Category;
 import christmas.constant.event.OrderLimit;
 import christmas.constant.message.CommonLetter;
-import christmas.validator.OrderAmountValidator;
-import christmas.validator.OrderMenuValidator;
-import christmas.validator.OrderValidator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
